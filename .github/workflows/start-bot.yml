@@ -2,6 +2,7 @@ name: Run Bing Rewards Bot
 on:
   schedule:
     - cron: "0 0,8,16 * * *" # Runs every 8 hours at Midnight, 8AM, 4PM UTC
+  workflow_dispatch:
 jobs:
   Setup-and-Run:
     runs-on: ubuntu-latest
