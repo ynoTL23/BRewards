@@ -48,5 +48,7 @@ jobs:
         run: job_id=$(gh api workflows -q workflow_name:Setup-and-Run -f jobs -f id)
         
       - name: Stop the Setup-and-Run job
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: gh api jobs stop $job_id
         if: steps.sleep_for_30_minutes.outcome == 'success'
