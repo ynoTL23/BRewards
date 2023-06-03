@@ -37,15 +37,16 @@ jobs:
           BROWSER: ${{ vars.BROWSER }}
           BOT_NAME: ${{ vars.BOT_NAME }}
           AUTOMATE_PUNCHCARD: ${{ vars.AUTOMATE_PUNCHCARD }}
-  Kill-Python:
+  Kill-Setup-and-Run:
     runs-on: ubuntu-latest
     steps:
       - name: Sleep for 30 minutes
-        run:  sleep 60
+        run: sleep 60
         
-      - name: Terminate Python instance
-        run: pkill -f python
+      - uses: actions/checkout@v2
+      - name: Get the job ID of the Setup-and-Run job
+        run: job_id=$(gh api workflows -q workflow_name:Setup-and-Run -f jobs -f id)
+        
+      - name: Stop the Setup-and-Run job
+        run: gh api jobs stop $job_id
         if: steps.sleep_for_30_minutes.outcome == 'success'
-          
-      - name: Cleanup
-        run: rm .env*
