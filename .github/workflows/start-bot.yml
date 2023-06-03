@@ -26,8 +26,15 @@ jobs:
       - name: Execute main.py
         run: |
           python main.py
-  Cleanup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Delete .env
+        env:
+          LOGIN: ${{ secrets.LOGIN }}
+          URL: ${{ secrets.URL }}
+          HEADLESS: ${{ secrets.HEADLESS }}
+          MULTITHREADING: ${{ secrets.MULTITHREADING }}
+          DELAY_SEARCH: ${{ secrets.DELAY_SEARCH }}
+          DAILY_SET: ${{ secrets.DAILY_SET }}
+          BROWSER: ${{ secrets.BROWSER }}
+          BOT_NAME: ${{ secrets.BOT_NAME }}
+          AUTOMATE_PUNCHCARD: ${{ secrets.AUTOMATE_PUNCHCARD }}
+      - name: Cleanup
         run: rm .env*
