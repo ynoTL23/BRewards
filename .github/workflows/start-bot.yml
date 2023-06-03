@@ -36,5 +36,6 @@ jobs:
           BROWSER: ${{ secrets.BROWSER }}
           BOT_NAME: ${{ secrets.BOT_NAME }}
           AUTOMATE_PUNCHCARD: ${{ secrets.AUTOMATE_PUNCHCARD }}
+          APPRISE_ALERTS: ${{ secrets.APPRISE_ALERTS }}
       - name: Cleanup
         run: rm .env*
