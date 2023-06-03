@@ -32,7 +32,7 @@ jobs:
           HEADLESS: ${{ secrets.HEADLESS }}
           MULTITHREADING: ${{ secrets.MULTITHREADING }}
           DELAY_SEARCH: ${{ secrets.DELAY_SEARCH }}
-          DAILY_SET: ${{ secrets.DAILY_SET }}
+          DAILY_SETS: ${{ secrets.DAILY_SETS }}
           BROWSER: ${{ secrets.BROWSER }}
           BOT_NAME: ${{ secrets.BOT_NAME }}
           AUTOMATE_PUNCHCARD: ${{ secrets.AUTOMATE_PUNCHCARD }}
