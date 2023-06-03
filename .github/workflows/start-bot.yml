@@ -1,7 +1,7 @@
 name: Run Bing Rewards Bot
 on:
   schedule:
-    - cron: "0 0,8,16 * * *" # Runs every 8 hours at Midnight, 8AM, 4PM UTC
+    - cron: "0 0,8,16 * * *" # Runs every 8 hours at Midnight, 8AM, 4PM UTC (8PM, 4AM, Midnight - EST)
   workflow_dispatch:
 jobs:
   Setup-and-Run:
