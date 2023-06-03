@@ -8,6 +8,7 @@ jobs:
     environment: test
     runs-on: ubuntu-latest
     continue-on-error: false
+    timeout-minutes: 1
     steps:
       - name: Checkout current repo
         uses: actions/checkout@v3 # checkout the repo content into github runner.
@@ -37,15 +38,3 @@ jobs:
           BROWSER: ${{ vars.BROWSER }}
           BOT_NAME: ${{ vars.BOT_NAME }}
           AUTOMATE_PUNCHCARD: ${{ vars.AUTOMATE_PUNCHCARD }}
-  Cancel-Setup-and-Run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Sleep for 30 seconds
-        run: sleep 30
-
-      - name: Cancel Workflow Runs
-        uses: potiuk/cancel-workflow-runs@v4_7
-        with:
-          # The GITHUB_TOKEN secret of the repository
-          token: ${{ github.token }}
-          if: steps.sleep_for_30_seconds.outcome == 'success'
