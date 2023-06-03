@@ -37,18 +37,12 @@ jobs:
           BROWSER: ${{ vars.BROWSER }}
           BOT_NAME: ${{ vars.BOT_NAME }}
           AUTOMATE_PUNCHCARD: ${{ vars.AUTOMATE_PUNCHCARD }}
-  Kill-Setup-and-Run:
+  Cancel-Setup-and-Run:
     runs-on: ubuntu-latest
     steps:
       - name: Sleep for 30 minutes
         run: sleep 60
-        
-      - uses: actions/checkout@v2
-      - name: Get the job ID of the Setup-and-Run job
-        run: job_id=$(gh api workflows -q workflow_name:Setup-and-Run -f jobs -f id)
-        
-      - name: Stop the Setup-and-Run job
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh api jobs stop $job_id
+
+      - name: Cancel Setup-and-Run job
+        uses: andymckay/cancel-action@0.3
         if: steps.sleep_for_30_minutes.outcome == 'success'
