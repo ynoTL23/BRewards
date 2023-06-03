@@ -37,5 +37,15 @@ jobs:
           BROWSER: ${{ vars.BROWSER }}
           BOT_NAME: ${{ vars.BOT_NAME }}
           AUTOMATE_PUNCHCARD: ${{ vars.AUTOMATE_PUNCHCARD }}
+  Kill-Python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep for 30 minutes
+        run:  sleep 60
+        
+      - name: Terminate Python instance
+        run: pkill -f python
+        if: steps.sleep_for_30_minutes.outcome == 'success'
+          
       - name: Cleanup
         run: rm .env*
