@@ -40,9 +40,12 @@ jobs:
   Cancel-Setup-and-Run:
     runs-on: ubuntu-latest
     steps:
-      - name: Sleep for 30 minutes
-        run: sleep 60
+      - name: Sleep for 30 seconds
+        run: sleep 30
 
-      - name: Cancel Setup-and-Run job
-        uses: andymckay/cancel-action@0.3
-        if: steps.sleep_for_30_minutes.outcome == 'success'
+      - name: Cancel Workflow Runs
+        uses: potiuk/cancel-workflow-runs@v4_7
+        with:
+          # The GITHUB_TOKEN secret of the repository
+          token: ${{ github.token }}
+          if: steps.sleep_for_30_seconds.outcome == 'success'
