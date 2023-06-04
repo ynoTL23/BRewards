@@ -34,7 +34,7 @@ jobs:
           HEADLESS: ${{ vars.HEADLESS }}
           MULTITHREADING: ${{ vars.MULTITHREADING }}
           DELAY_SEARCH: ${{ vars.DELAY_SEARCH }}
-          DAILY_SETS: ${{ vars.DAILY_SETS }}
+          DAILY_SET: ${{ vars.DAILY_SET }}
           BROWSER: ${{ vars.BROWSER }}
           BOT_NAME: ${{ vars.BOT_NAME }}
           AUTOMATE_PUNCHCARD: ${{ vars.AUTOMATE_PUNCHCARD }}
