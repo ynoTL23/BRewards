@@ -326,15 +326,15 @@ def get_driver(isMobile = False):
             driver = webdriver.Chrome(options=options)
         else:
             driver = webdriver.Chrome(
-                service=Service(ChromeDriverManager(cache_valid_range=30).install()),
+                service=Service(ChromeDriverManager().install()),
                 options=options)
     elif BROWSER == "edge":
         driver = webdriver.Edge(
-            service=Service(EdgeChromiumDriverManager(cache_valid_range=30).install()),
+            service=Service(EdgeChromiumDriverManager().install()),
             options=options)
     elif BROWSER == "firefox":
         driver = webdriver.Firefox(
-            service=Service(GeckoDriverManager(cache_valid_range=30).install()),
+            service=Service(GeckoDriverManager().install()),
             options=options)
     driver.maximize_window()
     return driver
